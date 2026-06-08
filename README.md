@@ -1,25 +1,28 @@
-# Proyecto LogiSmart: Sistema de Gestión Logística
+# Proyecto LogiSmart - Sistema Logístico (Arquitectura Clean & GoF)
 
-## Descripción
-LogiSmart es un sistema de gestión logística de alto rendimiento diseñado bajo una **Arquitectura de 4 Capas (Clean Architecture)**. El objetivo principal es la gestión de envíos, vehículos y clientes, priorizando el desacoplamiento mediante patrones de diseño avanzados para garantizar que los cambios en las reglas de negocio no impacten en la estabilidad estructural.
+## 👥 Equipo de Desarrollo
+- **Santino Tanus Linares**
+- **Ayrton Ferreira Nieto**
+- **Renata Agüera**
 
-## Arquitectura del Proyecto
-El código fuente está aislado por responsabilidades:
-- `domain/`: Entidades de negocio puras y reglas de dominio (agnósticas a frameworks o bases de datos).
-- `application/`: Casos de uso, validaciones y orquestación de operaciones transaccionales.
-- `persistence/`: Capa de acceso a datos que aísla las consultas SQL del modelo de objetos.
-- `infrastructure/`: Implementaciones de soporte técnico (Notificaciones, Lazy Loading, testing).
+## 📝 Descripción
+Este proyecto representa la entrega final (Hitos 1 a 14) de LogiSmart. Consiste en un sistema backend puro en Java, estructurado bajo una **Arquitectura de 4 Capas**, que implementa exhaustivamente patrones de diseño creacionales, estructurales y de comportamiento para garantizar un acoplamiento mínimo y alta cohesión.
 
-## Cómo probar y ejecutar el proyecto
+## 📦 Estructura del Proyecto (Clean Architecture)
+- `domain/`: Núcleo del negocio. Contiene `Envio`, Estados (`State`) y Cálculos (`Strategy`). 100% independiente.
+- `application/`: Casos de uso. Orquesta validaciones (`Chain`), flujos de trabajo (`Template Method`) y transacciones (`Command`).
+- `persistence/`: Capa de abstracción de datos (`Repository`, `Data Mapper`, `Unit of Work`).
+- `infrastructure/`: Soporte técnico, notificaciones (`Observer`), historial (`Memento`) y testing.
 
-El proyecto no requiere dependencias externas complejas, ya que utiliza Java puro. Para probar su funcionamiento, existen dos puntos de entrada principales:
+## 🚀 Cómo Ejecutar la Demostración (Live Demo)
+Para la defensa del proyecto, se ha preparado un script narrativo que ejecuta los patrones principales en vivo.
+1. Navegue hasta `src/com/logismart/infrastructure/main/MainIntegracion.java`.
+2. Compile y ejecute el archivo.
+3. **Resultado esperado:** La consola mostrará un flujo paso a paso evidenciando el `Template Method`, la captura del estado con `Memento`, la ejecución del viaje mediante `Command` y, finalmente, un *Rollback* simulando una emergencia.
 
-### 1. Ejecutar el Flujo Principal (Main)
-El flujo completo de negocio (creación, validación, costeo y persistencia simulada) se ejecuta desde la clase de integración.
-- **Archivo:** `src/com/logismart/infrastructure/main/MainIntegracion.java`
-- **Acción:** Compilar y ejecutar este archivo para visualizar la traza de operaciones, eventos del mediador y registros de auditoría en consola.
-
-### 2. Ejecutar la Suite de Pruebas Integradas
-Para validar la integridad de la arquitectura y asegurar que las reglas de negocio funcionan correctamente, se provee una suite de pruebas.
-- **Archivo:** `src/com/logismart/infrastructure/test/SuitePruebasIntegracion.java`
-- **Acción:** Ejecutar para correr los casos de prueba (flujo feliz, errores de validación, etc.) y verificar los `[PASS]` del sistema.
+## 🧪 Cómo Ejecutar la Suite de Pruebas Integradas
+Se provee una suite exhaustiva diseñada para estresar la máquina de estados, el motor de estrategias y la cadena de validaciones.
+1. Navegue hasta `src/com/logismart/infrastructure/test/SuitePruebasIntegracion.java`.
+2. Habilite las aserciones en la JVM (flag `-ea`).
+3. Compile y ejecute el archivo.
+4. **Resultado esperado:** Ejecución de 5 módulos de testing con **42 validaciones (asserts) exitosas**.
