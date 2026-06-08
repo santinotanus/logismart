@@ -2,8 +2,7 @@ package com.logismart.domain.model;
 
 import com.logismart.domain.state.EstadoEnvio;
 import com.logismart.domain.state.EstadoConfirmado;
-import java.util.ArrayList;
-import java.util.List;
+import com.logismart.infrastructure.memento.EnvioMemento;
 
 public class Envio {
     private String id;
@@ -38,4 +37,15 @@ public class Envio {
     public void cancelar() { estadoActual.cancelar(this); }
     public void ponerEnReparto() { estadoActual.ponerEnReparto(this); }
     public void entregar() { estadoActual.entregar(this); }
+
+    // --- MÉTODOS MEMENTO (NUEVO) ---
+    public EnvioMemento guardarEstado() {
+        System.out.println("[Envio] Guardando estado actual: " + estadoActual.getNombre());
+        return new EnvioMemento(this.estadoActual);
+    }
+
+    public void restaurarEstado(EnvioMemento memento) {
+        this.estadoActual = memento.getEstado();
+        System.out.println("[Envio] Estado restaurado a: " + estadoActual.getNombre());
+    }
 }
