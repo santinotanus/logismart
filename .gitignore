@@ -1,0 +1,13 @@
+bin/
+build/
+target/
+*.class
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+/lib/*.jar
+.DS_Store
+.env
