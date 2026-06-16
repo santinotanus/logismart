@@ -19,7 +19,7 @@ public class MainIntegracion {
         SistemaAuditoria auditoria = new SistemaAuditoria();
         LogisticaFacade facade = new LogisticaFacade();
         Caretaker caretaker = new Caretaker();
-        Thread.sleep(1000); // Pequeña pausa para efecto dramático en la presentación
+        Thread.sleep(1000); // Simulación de tiempo de carga
         
         // --- CREACIÓN DEL DOMINIO ---
         System.out.println("\n>>> 2. CREANDO ENTIDAD DE DOMINIO...");
