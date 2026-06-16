@@ -14,7 +14,7 @@
 El sistema LogiSmart fue concebido bajo el paradigma de **Arquitectura de 4 Capas** (Clean Architecture), asegurando que el diseño sea flexible, mantenible y escalable. Esta separación de responsabilidades garantiza que la capa de Dominio (reglas de negocio centrales) sea completamente agnóstica a la infraestructura, la interfaz de usuario y los motores de persistencia subyacentes.
 
 ## 2. Catálogo de Patrones GoF Implementados (14 Patrones)
-Para construir una arquitectura robusta, transaccional y modular, se integró el siguiente ecosistema de **14 patrones de diseño clásicos (superando los 13 exigidos por la rúbrica)**, justificando el valor técnico aportado por cada uno:
+Para construir una arquitectura robusta, transaccional y modular, se integró el siguiente ecosistema de **14 patrones de diseño clásicos **, justificando el valor técnico aportado por cada uno:
 
 ### Patrones de Comportamiento (11)
 1. **State:** *Gestión del ciclo de vida.* Se implementó para controlar las transiciones del paquete (`Confirmado` -> `En Tránsito` -> `Entregado`). **Justificación:** Elimina condicionales masivos (`switch-case`) en la clase central y bloquea por polimorfismo operaciones ilegales (ej. intentar entregar un paquete retenido).
